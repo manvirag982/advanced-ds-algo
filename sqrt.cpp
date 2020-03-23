@@ -1,4 +1,5 @@
 // find sum of given query 
+// update is addition of fibonacci
 #include<bits/stdc++.h>
 using namespace std;
 #define int long long int
