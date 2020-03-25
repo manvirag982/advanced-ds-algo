@@ -102,3 +102,127 @@ int main()
     cout<<getsum(1,4)<<endl;
     return 0;
 }
+
+/*Maximize Letter Beauty Problem Code: MAXBTY codechef
+  #include<bits/stdc++.h>
+  using namespace std;
+  #define int long long int
+  #define ld long double
+  #define w(x) int x; cin>>x; while(x--)
+  #define fr(i,n)   for(int i=0;i<n;i++)
+  #define frr(i,n)  for(int i=1;i<=n;i++)
+  #define vi vector<int>
+  #define mod 1000000007
+  #define pi pair<int,int>
+  #define f first
+  #define s second
+  #define pb push_back
+  #define mk make_pair
+  #define all(x) x.begin(),x.end() 
+  #define i32 int32_t
+  #define i16 int16_t
+  #define endl "\n"
+  #define fastio   ios_base::sync _with_stdio(false);cin.tie(NULL);
+  const int MAX =100001;
+  void pls()
+  {
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+  #ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+  #endif
+  }
+int n,q;
+int a[MAX];
+struct segtree
+     {
+           int seg[3*MAX]={0},lazy[3*MAX]={0};
+
+           void append(int i,int x){
+            seg[i]+=x;
+            lazy[i]+=x;
+           }
+           void print()
+           {
+                for(int i=0;i<2*n-1;i++)
+                cout<<seg[i]<<" ";
+                cout<<endl;
+           }
+           void push(int i){
+            
+            append(2*i+1,lazy[i]);
+            append(2*i+2,lazy[i]);
+            lazy[i]=0;
+           }
+           void update(int gl,int gr,int x,int i=0,int sl=0,int sr=n-1){
+                   
+
+                   if(sl!=sr)
+                    push(i);
+                   
+                    if((sl>gr)|| sr<gl || sl>sr)
+                      return ;
+
+                   
+
+                   if(sl>=gl && sr<=gr)
+                   {   
+                       append(i,x);
+                       return ;
+                   }
+
+                   
+                   int mid=(sl+sr)/2;
+                  
+                   
+                    update(gl,gr,x,2*i+1,sl,mid);
+                    update(gl,gr,x,2*i+2,mid+1,sr);
+                  
+                  seg[i]=max(seg[2*i+1],seg[2*i+2]);
+           }
+           int get(int gl,int gr,int i=0,int sl=0,int sr=n-2)
+           {          
+                     
+                    if(sl!=sr) push(i); if((sl>gr)|| sr<gl || sl>sr) return
+                    1LL*INT64_MAX;
+
+                    if(sl>=gl && sr<=gr)
+                      return seg[i];
+                    int mid=(sl+sr)/2;
+                    return max(get(gl,gr,2*i+1,sl,mid),get(gl,gr,2*i+2,mid+1,sr));
+           }
+     };     
+void solve()
+{       cin>>n>>q;
+          segtree mx,mn;
+        for(int i=0;i<n;i++) cin>>a[i];
+          for(int i=0;i<n;i++){
+             mn.update(i,n-1,-a[i]);
+             mx.update(i,n-1,a[i]);
+          }
+          mn.print();
+          mx.print();
+          while(q--){
+            char x; int y,z;
+            cin>>x>>y>>z; y--;z--;
+            if(x=='Q'){
+              cout<<mx.get(z,n-1)+mn.get(0,y-1)<<endl;
+            }
+            else
+            {    z++;
+                mn.update(y,n-1,a[y]-z);
+                mx.update(y,n-1,z-a[y]);
+                a[y]=z;
+            }
+          }
+}
+i32 main(){pls();
+        int t;
+        cin>>t; 
+        while(t--){
+          solve();
+        }
+        
+return 0;}
+       
+*/
