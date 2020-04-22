@@ -1,4 +1,5 @@
 //intersting queries gfg
+//https://blog.anudeep2011.com/mos-algorithm/
 #include<bits/stdc++.h>
 using namespace std;
 #define int long long int
