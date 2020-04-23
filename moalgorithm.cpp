@@ -1,4 +1,5 @@
 //intersting queries gfg
+//https://www.geeksforgeeks.org/array-range-queries-elements-frequency-value/
 //https://blog.anudeep2011.com/mos-algorithm/
 // normal time complexity=O(n^2) ,,, but by mo algorithms O(N^1/2 *N) just by rearanging queries its cool na
 // for complexity see above block...sqrt baap of this just O(n^1/2) but question should satisfied 
